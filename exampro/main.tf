@@ -63,7 +63,11 @@ resource "aws_s3_object" "lagos" {
 
 resource "aws_s3_object" "kuala_lumpur" {
   bucket = aws_s3_bucket.bucket01.id
-  key    = "chicago"    # A sincere mistake, that I will now commit as a demo....
+  # Notably, fixing this issue (where I had a duplicate "chicago" key here) required two invocations
+  # of `terraform apply` to heal itself. The first simply renamed the KL object wrongly named 
+  # "chicago" to its proper name, without replacing the real Chicago image. The second pass through
+  # (post-correction), Terraform picked up on the missing "chicago" object and recreated it. 
+  key    = "kuala_lumpur" 
   source = var.image_filenames.kuala_lumpur
   etag = filemd5(var.image_filenames.kuala_lumpur)
 }
