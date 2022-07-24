@@ -7,3 +7,4 @@ Learning Terraform by making myself automate things
 
 
     - [S3 follow along](https://www.youtube.com/watch?v=Ia-UEYYR44s&t=412s)
+      - create buck and upload files
