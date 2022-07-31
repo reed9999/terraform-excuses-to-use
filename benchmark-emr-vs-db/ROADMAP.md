@@ -12,4 +12,6 @@
 - Run same queries - adapt to Spark if need be (shouldn't need much adaptation).
 - Assess
 
+- Improve handling of secrets (see main-benchmark.tf variables).
+
 - ~~Bigger assessment: How far can I take this that's cost-effective? ~~
