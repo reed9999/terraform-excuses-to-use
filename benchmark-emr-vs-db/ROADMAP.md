@@ -10,4 +10,6 @@
 - Set up EMS cluster.
 - Populate with same dataset.
 - Run same queries - adapt to Spark if need be (shouldn't need much adaptation).
-- 
+- Assess
+
+- ~~Bigger assessment: How far can I take this that's cost-effective? ~~
