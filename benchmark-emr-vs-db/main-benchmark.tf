@@ -40,5 +40,6 @@ resource "aws_rds_cluster" "rds" {
   master_username         = var.rds_username
   master_password         = var.rds_password
   backup_retention_period = 5
+  skip_final_snapshot     = true
   preferred_backup_window = "07:00-09:00"
 }
