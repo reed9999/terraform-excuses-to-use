@@ -14,4 +14,9 @@
 
 - Improve handling of secrets (see main-benchmark.tf variables).
 
-- ~~Bigger assessment: How far can I take this that's cost-effective? ~~
+## Things I've learned along the way
+
+1. There was some issue with how I originally tried to create an Aurora cluster in TF. If memory serves, I was trying to use the TF setup for a non-Aurora RDS cluster and it contained something inappropriate for Aurora. Apparently I somehow set up a cluster with no instances! See comments in main-benchmark.tf for more.
+2. "Publicly accessible" -- this is an attribute of an instance *within* the db cluster. It's not all that conspicuous upon creation nor to edit, but it can be edited by digging deeper into the settings. Or better yet, publicly_accessible = true in TF.    
+
+## Bigger assessment: How far can I take this that's cost-effective? 

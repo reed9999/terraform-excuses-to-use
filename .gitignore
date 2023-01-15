@@ -30,3 +30,7 @@ override.tf.json
 
 __*
 .terraform.lock.hcl
+
+# Personal conventions
+**/__*
+**/.__*
