@@ -34,3 +34,7 @@ __*
 # Personal conventions
 **/__*
 **/.__*
+
+# For the moment, we're just storing DB passwords in here, so we don't want it under 
+# revision control. 
+terraform.tfvars
