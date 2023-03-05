@@ -29,7 +29,7 @@ variable "rds_password" {
 resource "aws_rds_cluster" "rds" {
   cluster_identifier      = "aurora-cluster-demo"
   engine                  = "aurora-mysql"
-  engine_version          = "5.7.mysql_aurora.2.10.2"
+  engine_version          = "8.0.mysql_aurora.3.02.0"
   # availability_zones      = ["us-east-2a", "us-east-2b", "us-east-2c"]
   database_name           = "mydb"
   master_username         = var.rds_username
@@ -44,8 +44,9 @@ resource "aws_rds_cluster_instance" "cluster_instances" {
     count              = 2
     identifier         = "aurora-cluster-demo-${count.index}"
     cluster_identifier = aws_rds_cluster.rds.id
-    # instance_class     = "db.r4.large"
-    instance_class     = "db.t2.small"
+    # https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Compare-v2-v3.html#AuroraMySQL.mysql80-instance-classes
+    #   db.t2.small is no longer acceptable.
+    instance_class     = "db.t3"
     engine             = aws_rds_cluster.rds.engine
     engine_version     = aws_rds_cluster.rds.engine_version
     publicly_accessible = true 
