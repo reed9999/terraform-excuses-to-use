@@ -41,12 +41,12 @@ resource "aws_rds_cluster" "rds" {
 
 
 resource "aws_rds_cluster_instance" "cluster_instances" {
-    count              = 2
+    count              = 1
     identifier         = "aurora-cluster-demo-${count.index}"
     cluster_identifier = aws_rds_cluster.rds.id
     # https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Compare-v2-v3.html#AuroraMySQL.mysql80-instance-classes
     #   db.t2.small is no longer acceptable.
-    instance_class     = "db.t3"
+    instance_class     = "db.t4g.medium"
     engine             = aws_rds_cluster.rds.engine
     engine_version     = aws_rds_cluster.rds.engine_version
     publicly_accessible = true 
