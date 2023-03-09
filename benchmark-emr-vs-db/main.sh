@@ -17,4 +17,7 @@ terraform apply -auto-approve > $TEMP_TERRAFORM_OUTPUT
 ./do_body.sh
 
 terraform destroy -auto-approve
+echo "terraform destroy completed (from main - possibly redundant) at `date`"
 rm $TEMP_TERRAFORM_OUTPUT
+
+

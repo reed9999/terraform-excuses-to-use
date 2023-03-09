@@ -35,10 +35,7 @@ function do_body {
         exit -1
     fi
 
-    "$MYSQL_CLIENT" -h $AURORA_ENDPOINT -P 3306 -u admin --password=$TF_RDS_PASSWORD mydb --execute="SHOW TABLES;"
-    "$MYSQL_CLIENT" -h $AURORA_ENDPOINT -P 3306 -u admin --password=$TF_RDS_PASSWORD mydb --execute="CREATE TABLE foo (bar int, baz varchar(20));"
-    "$MYSQL_CLIENT" -h $AURORA_ENDPOINT -P 3306 -u admin --password=$TF_RDS_PASSWORD mydb --execute="SELECT COUNT(*) from foo;"
-
+    "$MYSQL_CLIENT" -h $AURORA_ENDPOINT -P 3306 -u admin --password=$TF_RDS_PASSWORD mydb < go.sql
     sleep $duration
     
     echo "Time's up! Now it's time to tear down."
@@ -49,4 +46,4 @@ function do_body {
 do_body
 
 terraform destroy -auto-approve
-rm $TEMP_TERRAFORM_OUTPUT   # set in main.sh
+echo "terraform destroy completed at `date`"
